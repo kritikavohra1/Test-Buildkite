@@ -4,7 +4,7 @@ steps:
       queue: "default"
     plugins:
     # #   - seek-oss/aws-sm#v2.1.0:
-      - docker#v3.3.0:  
+      - docker#v3.5.0:  
           image: "cypress/base:14.17.0"
     command:
       - 'echo "Running staging tests"'
