@@ -17,5 +17,5 @@ steps:
     #   - "EXIT_CODE=0"
     #   # - 'npm run cy:run:titans:chrome:headed || EXIT_CODE=\$?'
     #   # Fails if the cypress raises any error
-    #   - npx cypress run --spec 'cypress/e2e/ui.cy.ts'
+      - npx cypress run --spec 'cypress/e2e/ui.cy.ts'
     #   - 'exit \${EXIT_CODE}'
