@@ -2,20 +2,16 @@ steps:
   - label: ":cypress: Run staging tests"
     agents:
       queue: "default"
-    # plugins:
-    # # #   - seek-oss/aws-sm#v2.1.0:
-    #   - docker#v3.3.0:  
-    #       image: "cypress/base:14.17.0"
     command:
       - 'echo "Running staging tests"'
       - "set -e"
-      # - "apt-get update -y"
       - 'echo "Running staging tests"'
       - "npm install"
-    #   - "EXIT_CODE=0"
-    #   - 'echo \${EXIT_CODE}'
-    #   - "EXIT_CODE=0"
-    #   # - 'npm run cy:run:titans:chrome:headed || EXIT_CODE=\$?'
-    #   # Fails if the cypress raises any error
+      - "EXIT_CODE=0"
+      - 'echo \${EXIT_CODE}'
       - npx cypress run --spec 'cypress/e2e/ui.cy.ts'
-    #   - 'exit \${EXIT_CODE}'
+    artifact_paths:
+      - 'cypress/videos/**/*.mp4'
+      - 'cypress/screenshots/*'
+notify:
+  - email: 'kritika.vohra@thoughtworks.com'
