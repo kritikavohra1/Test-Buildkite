@@ -9,7 +9,7 @@ steps:
     command:
       - 'echo "Running staging tests"'
       - "set -e"
-      - "apt-get update -y"
+      # - "apt-get update -y"
       - 'echo "Running staging tests"'
       - "npm install"
     #   - "EXIT_CODE=0"
