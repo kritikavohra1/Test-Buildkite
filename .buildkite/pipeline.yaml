@@ -1,0 +1,83 @@
+steps:
+  - label: ":cypress: Run staging tests"
+    agents:
+      queue: "default"
+    plugins:
+      - seek-oss/aws-sm#v2.1.0:
+          # env:
+          #   CYPRESS_USERNAME:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".username"
+          #   CYPRESS_PASSWORD:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".password"
+          #   CYPRESS_INVALID_USERNAME:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".invalid_username"
+          #   CYPRESS_INVALID_PASSWORD:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".invalid_password"
+          #   CYPRESS_OLD_EMAIL:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".old_email"
+          #   CYPRESS_CHANGE_EMAIL_PASSWORD:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".change_email_password"
+          #   CYPRESS_NEW_EMAIL:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".new_email"
+          #   CYPRESS_CHANGE_PASSWORD_EMAIL:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".change_password_email"
+          #   CYPRESS_OLD_PASSWORD:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".old_password"
+          #   CYPRESS_NEW_PASSWORD:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".new_password"
+          #   CYPRESS_UNVERIFIEDHIRER_EMAIL:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".unverifiedhirer_email"
+          #   CYPRESS_UNVERIFIEDHIRER_PASSWORD:
+          #     secret-id: "sivarc/stagecypress"
+          #     json-key: ".unverifiedhirer_password"
+      - docker#v3.3.0:
+          image: "cypress/base:14.17.0"
+          # environment:
+          #   - "CYPRESS_USERNAME"
+          #   - "CYPRESS_PASSWORD"
+          #   - "CYPRESS_INVALID_USERNAME"
+          #   - "CYPRESS_INVALID_PASSWORD"
+          #   - "CYPRESS_OLD_EMAIL"
+          #   - "CYPRESS_CHANGE_EMAIL_PASSWORD"
+          #   - "CYPRESS_NEW_EMAIL"
+          #   - "CYPRESS_CHANGE_PASSWORD_EMAIL"
+          #   - "CYPRESS_OLD_PASSWORD"
+          #   - "CYPRESS_NEW_PASSWORD"
+          #   - "CYPRESS_UNVERIFIEDHIRER_EMAIL"
+          #   - "CYPRESS_UNVERIFIEDHIRER_PASSWORD"
+    command:
+      - "set -e"
+      - "apt-get update -y"
+      - "npm install"
+      - "EXIT_CODE=0"
+      - 'echo \${EXIT_CODE}'
+      - "EXIT_CODE=0"
+      # - 'npm run cy:run:titans:chrome:headed || EXIT_CODE=\$?'
+      # Fails if the cypress raises any error
+      - npx cypress run --spec 'cypress/e2e/ui.cy.ts'
+      - 'exit \${EXIT_CODE}'
+#     artifact_paths:
+#       - 'cypress/videos/**/*.mp4'
+#       - 'cypress/screenshots/*'
+#       - 'cypress/reports/*'
+# notify:
+#   - email: 'kvohra@seekasia.com'
+#   - email: 'pgoyal@seekasia.com'
+#   - email: 'pgaikwad@seekasia.com'
+#   - email: 'pooja.goyal@thoughtwork.com'
+#   # - slack: 'sivarc-ui-automation-buildkite-notifications'
+#   - slack:
+#       message: 'SivaRC UI Test Automation Build Execution Completed'
+#       channels:
+#         - '#sivarc-ui-automation-buildkite-notifications'
