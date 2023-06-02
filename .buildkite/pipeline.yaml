@@ -13,8 +13,5 @@ steps:
     artifact_paths:
       - 'cypress/videos/**/*.mp4'
       - 'cypress/screenshots/*'
-
-
-
 notify:
-  - email: 'kritika.vohra@thoughtworks.com'
+  - email: 'test@xyz.com'

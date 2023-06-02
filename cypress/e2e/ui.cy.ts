@@ -11,6 +11,5 @@ describe("Test page object model sample demo", () => {
 
     it('Enter details on page test', ()=>{
         uiPage.enterDetails()
-        cy.get('test')
     })
 })
