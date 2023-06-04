@@ -2,8 +2,8 @@ steps:
   - label: ":cypress: Run staging tests"
     agents:
       queue: "default"
-      environment:
-          - MODULE=$MODULE
+    # env:
+    #   - MODULE=$MODULE
     command:
       - 'echo "Running staging tests"'
       - "set -e"
