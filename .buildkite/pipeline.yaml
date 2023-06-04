@@ -2,18 +2,11 @@ steps:
   - label: ":cypress: Run staging tests"
     agents:
       queue: "default"
-    # env:
-    #   - MODULE=$MODULE
-    plugins:
-      - docker#v3.5.0:
-          environment:
-            - MODULE=$MODULE
     command:
       - 'echo "Running staging tests"'
       - "set -e"
       - "npm install"
-      - "MODULE=$${MODULE:-login}"
-      - echo $${MODULE}
+      - "MODULE=$${MODULE:-ui}"
       - npm run cy:run:$$MODULE'
       - "EXIT_CODE=0"
       - 'echo \${EXIT_CODE}'
