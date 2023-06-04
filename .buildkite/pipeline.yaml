@@ -4,9 +4,10 @@ steps:
       queue: "default"
     # env:
     #   - MODULE=$MODULE
-    # plugins: 
-      environment:
-        - MODULE=$MODULE
+    plugins:
+      - docker#v3.5.0:
+          environment:
+            - MODULE=$MODULE
     command:
       - 'echo "Running staging tests"'
       - "set -e"
