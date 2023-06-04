@@ -7,7 +7,7 @@ steps:
       - "set -e"
       - "npm install"
       - "MODULE=$${MODULE:-ui}"
-      - npm run cy:run:$$MODULE'
+      - 'npm run cy:run:$$MODULE'
       - "EXIT_CODE=0"
       - 'echo \${EXIT_CODE}'
     artifact_paths:
