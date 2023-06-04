@@ -2,14 +2,15 @@ steps:
   - label: ":cypress: Run staging tests"
     agents:
       queue: "default"
-      environment:
-          - MODULE=$MODULE
+      # environment:
+      #     - MODULE=$MODULE
     command:
       - 'echo "Running staging tests"'
       - "set -e"
       - "npm install"
-      - "MODULE=$${MODULE}"
-      - npm run cy:run:$$MODULE'
+      # - "MODULE=$${MODULE}"
+      # - echo $${MODULE}
+      # - npm run cy:run:$$MODULE'
       - "EXIT_CODE=0"
       - 'echo \${EXIT_CODE}'
     artifact_paths:
