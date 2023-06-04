@@ -9,7 +9,7 @@ steps:
       - "set -e"
       - "npm install"
       - "MODULE=$${MODULE}"
-      - npx cypress run --spec 'cypress/e2e/ui.cy.ts'
+      - npm run cy:run:$$MODULE'
       - "EXIT_CODE=0"
       - 'echo \${EXIT_CODE}'
     artifact_paths:
