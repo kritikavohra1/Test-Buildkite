@@ -6,7 +6,7 @@ steps:
     #   - MODULE=$MODULE
     # plugins: 
       environment:
-      - MODULE=$MODULE
+        - MODULE=$MODULE
     command:
       - 'echo "Running staging tests"'
       - "set -e"
